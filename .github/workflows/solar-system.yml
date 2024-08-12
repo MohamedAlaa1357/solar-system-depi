@@ -38,8 +38,8 @@ jobs:
 
             - name: download artifact
               uses: actions/download-artifact@v3
-              with:
-                 #name: npm_test-file
+              #with:
+                #name: npm_test-file
 
             - name: Read file
               run: cat test-results.txt
