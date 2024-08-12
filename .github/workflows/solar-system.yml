@@ -35,11 +35,3 @@ jobs:
               with:
                 name: mocha-test-result
                 path: test-result.xml
-
-            - #name: download artifact
-              #uses: actions/download-artifact@v3
-              #with:
-                #name: npm_test-file
-
-            - #name: Read file
-              #run: cat test-results.txt
