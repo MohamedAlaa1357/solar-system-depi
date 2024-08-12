@@ -36,10 +36,38 @@ jobs:
               run: npm install
 
             - name: unit testing
+              id: nodejs-unit-testing-step
               run: npm test
 
             - name: upload artifact
+              if: steps.nodejs-unit-testing-step.outcome == 'failure' || steps.nodejs-unit-testing-step.outcome == 'success'
               uses: actions/upload-artifact@v3
               with:
                 name: mocha-test-result
                 path: test-results.xml
+    code-coverage:
+                  name: code-coverage
+                  needs: unit-testing
+                  runs-on: ubuntu-latest
+                  steps:
+                      - name: checkout
+                        uses: actions/checkout@v4
+                       
+                      - name: setup node js v 18
+                        uses: actions/setup-node@v3
+                        with:
+                          node-version: 18
+          
+                      - name: install depand.
+                        run: npm install
+                      
+                      - name: check code coverage
+                        continue-on-error: true
+                        run: npm run coverage
+
+                      - name: archive test-result
+                        uses: actions/upload-artifact@v3
+                        with:
+                         name: code-coverage-result
+                         path: coverage
+                         retention-days: 5
