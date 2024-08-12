@@ -33,13 +33,13 @@ jobs:
             - name: upload artifact
               uses: actions/upload-artifact@v3
               with:
-                #name: npm_test-file
-                path: test-results.txt
+                name: mocha-test-result
+                path: test-result.xml
 
-            - name: download artifact
-              uses: actions/download-artifact@v3
+            - #name: download artifact
+              #uses: actions/download-artifact@v3
               #with:
                 #name: npm_test-file
 
-            - name: Read file
-              run: cat test-results.txt
+            - #name: Read file
+              #run: cat test-results.txt
