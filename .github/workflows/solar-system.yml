@@ -47,7 +47,7 @@ jobs:
                 path: test-results.xml
     code-coverage:
                   name: code-coverage
-                  needs: unit-testing
+                  #needs: unit-testing
                   runs-on: ubuntu-latest
                   steps:
                       - name: checkout
